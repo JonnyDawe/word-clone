@@ -51,6 +51,7 @@ header {
   height: var(--header-height);
   border-bottom: 1px solid var(--color-gray-700);
   color: var(--color-gray-300);
+  padding: 0px 8px;
 }
 
 header .side {
@@ -229,4 +230,40 @@ h1 {
   to {
     transform: translateY(0%);
   }
+}
+
+
+.key {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.key.correct {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: white;
+}
+.key.incorrect {
+  background: var(--color-gray-300);
+  border-color: var(--color-gray-300);
+  color: white;
+}
+.key.misplaced {
+  background: var(--color-warning);
+  border-color: var(--color-warning);
+  color: white;
+}
+.key.none {
+  background-color:var(  --color-gray-900);
+}
+
+.keyboard-row {
+  display:flex;
+  justify-content:center;
+  column-gap: 4px;
+  padding-bottom: 4px;
 }

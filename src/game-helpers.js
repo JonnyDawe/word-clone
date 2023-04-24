@@ -53,3 +53,45 @@ export function checkGuess(guess, answer) {
 
   return result;
 }
+
+export function getKeyboardState(guesses, answer) {
+  const combinedGuesses = [];
+
+  guesses.forEach((guess) => {
+    const check = checkGuess(guess.guess, answer);
+
+    check.forEach((key) => {
+      const indexInArray = combinedGuesses.findIndex((item) => item.letter === key.letter);
+
+      if (indexInArray !== -1) {
+        combinedGuesses[indexInArray].status = key.status;
+      } else {
+        combinedGuesses.push(key);
+      }
+    });
+  });
+
+  return combinedGuesses;
+}
+
+
+
+export function getGameState(guesses, answer) {
+  if (guesses[guesses.length - 1]?.guess === answer) {
+    return {
+      state: "success",
+      guesses: guesses.length
+    }
+  }
+
+  if (guesses.length === 6) {
+    return {
+      state: "failure",
+      answer
+    }
+  }
+
+  return {
+    state: "playing"
+  }
+}
